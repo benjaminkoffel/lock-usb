@@ -1,0 +1,6 @@
+#!/bin/bash
+rm /usr/bin/usblock
+rm /usr/lib/systemd/system/usblock.service
+systemctl daemon-reload
+systemctl disable usblock
+systemctl stop usblock

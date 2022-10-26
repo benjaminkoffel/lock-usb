@@ -1,0 +1,12 @@
+#!/bin/bash
+gdbus monitor -y -d org.freedesktop.login1 |
+  while true; do
+    read X
+    if echo $X | grep "'LockedHint': <true>" &> /dev/null; then
+      echo 0 | tee /sys/bus/usb/devices/usb*/authorized > /dev/null;
+      echo "usb device authorization disabled"
+    elif echo $X | grep "'LockedHint': <false>" &> /dev/null; then
+      echo 1 | tee /sys/bus/usb/devices/usb*/authorized > /dev/null;
+      echo "usb device authorization enabled"
+    fi
+  done

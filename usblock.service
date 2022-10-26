@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable USB devices when screen is locked.
+
+[Service]
+ExecStart=/usr/bin/usblock
+Restart=always
+RestartSec=60
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+#!/bin/bash
+cp -f usblock /usr/bin/usblock
+chmod 755 /usr/bin/usblock
+cp -f usblock.service /usr/lib/systemd/system/usblock.service
+chmod 744 /usr/lib/systemd/system/usblock.service
+systemctl daemon-reload
+systemctl enable usblock
+systemctl restart usblock
